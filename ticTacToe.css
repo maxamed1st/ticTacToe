@@ -1,0 +1,30 @@
+:root {
+    box-sizing: border-box;
+    font-size: 2px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+body {
+    font-size: 18rem;
+}
+header {
+    display: flex;
+    justify-content: center;
+}
+header h1 {
+    font-size: 24rem;
+}
+main {
+    display: grid;
+    grid-template-columns: 64rem 64rem 64rem;
+    grid-template-rows: 64rem 64rem 64rem;
+    place-content: center;
+    gap: 4rem;
+}
+main > * {
+    border: 1rem black solid;
+    width: 64rem;
+    height: 64rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

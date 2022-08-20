@@ -1,12 +1,27 @@
+let main = document.querySelector("main");
 const gameBoard = (function() {
     //Module for the game board
+    gameArray = ["x", "o", "x", "o", "x", "x", "o", "x", "o"];
+    createGridCells = function() {
+        for (let i = 0; i < 9; i++) {
+            //create gridcells for the gameboard
+            //populate from the gameArray
+            div = document.createElement("div");
+            div.setAttribute("id", i);
+            div.textContent = gameArray[i];
+            main.appendChild(div);
+        }
+    }
+    return {gameArray, createGridCells};
 })();
 const displayController = (function() {
     //Module to control the display
 })();
-const players = function(name1, name2) {
+const player = function(name) {
     //Factory function for players
 }
-const main = function() {
-    //Main function to bring together the previouse function and interconnect them!
+const mainFunc = function() {
+    //Main function to bring together the previouse functions and interconnect them!
+    gameBoard.createGridCells();
 }
+mainFunc()
