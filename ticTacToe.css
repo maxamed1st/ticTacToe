@@ -24,6 +24,9 @@ main {
 .formDiv button {
     height: 2rem;
 }
+#secondPlayer {
+    margin-left: auto;
+}
 .visible {
     display: flex;
 }

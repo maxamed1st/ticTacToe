@@ -11,8 +11,9 @@
 <body>
     <header><h1>TIC TAC TOE</h1></header>
     <main>
-        <div class="visible playerNames">
+        <div class="visible">
             <form>
+                <!--Playernames form-->
                 <div class="formDiv">
                     <label for="playerOneName">First Player</label>
                     <input type="text" id="playerOneName" placeholder="full name" required>
@@ -25,6 +26,11 @@
                     <button type="submit" id="submit">Submit</button>
                 </div>
             </form>
+        </div>
+        <div class="invisible" class="playerNames">
+            <!--Container for player names-->
+            <div id="firstPlayer"></div>
+            <div id="secondPlayer"></div>
         </div>
     </main>
 </body>
