@@ -16,21 +16,24 @@
                 <!--Playernames form-->
                 <div class="formDiv">
                     <label for="playerOneName">First Player</label>
-                    <input type="text" id="playerOneName" placeholder="full name" required>
+                    <input type="text" class="height2" id="playerOneName" placeholder="full name" required>
                 </div>
                 <div class="formDiv">
                     <label for="playerTwoName">Second Player</label>
-                    <input type="text" id="playerTwoName" placeholder="full name" required>
+                    <input type="text" class="height2" id="playerTwoName" placeholder="full name" required>
                 </div>
                 <div class="formDiv">
-                    <button type="submit" id="submit">Submit</button>
+                    <button type="submit" class="height2" id="submit">Submit</button>
                 </div>
             </form>
         </div>
-        <div class="invisible" class="playerNames">
+        <div class="invisible" id="playerNames">
             <!--Container for player names-->
             <div id="firstPlayer"></div>
             <div id="secondPlayer"></div>
+        </div>
+        <div id="gameGrid">
+            <!--Container for game grid-->
         </div>
     </main>
 </body>
