@@ -21,7 +21,7 @@ main {
 .height2 {
     height: 2rem;
 }
-#secondPlayer {
+#secondPlayerDiv {
     margin-left: auto;
 }
 #gameGrid {
