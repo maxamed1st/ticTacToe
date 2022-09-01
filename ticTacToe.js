@@ -6,7 +6,17 @@ const firstPlayerDiv = document.getElementById("firstPlayerDiv");
 const secondPlayerDiv = document.getElementById("secondPlayerDiv");
 const gameBoard = (function() {
     //Module for the game board
-    gameArray = ["x", "o", "x", "o", "x", "x", "o", "x", "o"];
+    gameArray = [];
+    let firstPlayerTurn = true;
+    const gridCellCallback = function(e) {
+        //get players marker!!!!
+        let id = e.target.id
+        if (typeof gameArray[id] == "undefined") {
+            if (firstPlayerTurn) {
+
+            }
+        }
+    }
     const createGridCells = function() {
         for (let i = 0; i < 9; i++) {
             //create gridcells for the gameboard
@@ -14,6 +24,7 @@ const gameBoard = (function() {
             div = document.createElement("div");
             div.setAttribute("id", i);
             div.textContent = gameArray[i];
+            div.addEventListener("click", gridCellCallback);
             gameGrid.appendChild(div);
         }
     }
@@ -21,22 +32,26 @@ const gameBoard = (function() {
 })();
 const displayController = (function() {
     //Module to control the display
-    const toggleClass = function(element) {
+    let playerOne;
+    let playerTwo;
+    const toggleVisibility = function(element) {
         //toggle between visible and invisible class
         element.classList.toggle("visible");
         element.classList.toggle("invisible");
     }
-    playersForm.onsubmit = (e) => {
+    const formManagement = function(e) {
         e.preventDefault()
-        const playerOnename = playersForm["playerOneName"].value;
-        const playerTwoname = playersForm["playerTwoName"].value;
-        const playerOne = player(playerOnename);
-        const playerTwo = player(playerTwoname);
-        toggleClass(formContainer);
-        toggleClass(playerNames);
+        playerOne = player(playersForm["playerOneName"].value);
+        playerTwo = player(playersForm["playerTwoName"].value);
+        toggleVisibility(formContainer);
+        toggleVisibility(playerNames);
         firstPlayerDiv.innerText = playerOne.getName();
         secondPlayerDiv.innerText = playerTwo.getName();
+        gameBoard.createGridCells();
+        return {playerOne, playerTwo};
     }
+    playersForm.onsubmit = formManagement;
+    return {};
 })();
 const player = function(name) {
     //Factory function for players
