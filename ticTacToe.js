@@ -5,11 +5,10 @@ const gameBoard = (function() {
     gameArray = [];
     let firstPlayerTurn = true;
     let count = 0;
-    const resetCount = function() {
-        //Reset count for a new game
+    const resetVariables = function() {
+        //Reset necessery variables for new game
+        firstPlayerTurn = true;
         count = 0;
-    }
-    const resetArray = function() {
         gameArray = [];
     }
     const gridCellCallback = function(playerTwo, e) {
@@ -77,7 +76,7 @@ const gameBoard = (function() {
         if (count===5) displayController.displayTie();
         }
     }
-    return {createGridCells, resetArray, resetCount};
+    return {createGridCells, resetVariables};
 })();
 const displayController = (function() {
     //Module to control the display
@@ -117,8 +116,7 @@ const displayController = (function() {
         toggleVisibility(model);
     }
     const restartGame = function() {
-        gameBoard.resetArray();
-        gameBoard.resetCount();
+        gameBoard.resetVariables();
         while(gameGrid.firstChild) gameGrid.removeChild(gameGrid.lastChild);
         toggleVisibility(model);
         toggleVisibility(playerNames);
