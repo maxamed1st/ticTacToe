@@ -4,6 +4,11 @@ const gameBoard = (function() {
     //Module for the game board
     gameArray = [];
     let firstPlayerTurn = true;
+    let count = 0;
+    const resetCount = function() {
+        //Reset count for a new game
+        count = 0;
+    }
     const resetArray = function() {
         gameArray = [];
     }
@@ -41,7 +46,7 @@ const gameBoard = (function() {
         while(gameGrid.firstChild) gameGrid.removeChild(gameGrid.lastChild);
         createGridCells(playerOne, playerTwo);
     }
-    const determineWinner = function(playerTwo) {
+    const determineWinner = function(playerTwo, e) {
         //check if there is three of the same marker in a row
         //If so determine winner
         //this = playerOne
@@ -67,9 +72,12 @@ const gameBoard = (function() {
                     else displayController.displayWinner(playerTwo);
             }
         }
+        //Determine if the game is tie
+        if (gameArray[e.target.id] === "X") count++;
+        if (count===5) displayController.displayTie();
         }
     }
-    return {createGridCells, resetArray};
+    return {createGridCells, resetArray, resetCount};
 })();
 const displayController = (function() {
     //Module to control the display
@@ -103,15 +111,21 @@ const displayController = (function() {
         winningMessage.innerText = `${name} is the winner of this game`;
         toggleVisibility(model);
     }
+    const displayTie = function() {
+        //Display message when the game is a tie
+        winningMessage.innerText = "It's a tie";
+        toggleVisibility(model);
+    }
     const restartGame = function() {
         gameBoard.resetArray();
+        gameBoard.resetCount();
         while(gameGrid.firstChild) gameGrid.removeChild(gameGrid.lastChild);
         toggleVisibility(model);
         toggleVisibility(playerNames);
         toggleVisibility(formContainer);
     }
     restart.onclick = restartGame
-    return {displayWinner};
+    return {displayWinner, displayTie};
 })();
 const player = function(name) {
     //Factory function for players
