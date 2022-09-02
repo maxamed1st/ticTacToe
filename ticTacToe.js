@@ -9,6 +9,9 @@ const gameBoard = (function() {
     //Module for the game board
     gameArray = [];
     let firstPlayerTurn = true;
+    const resetArray = function() {
+        gameArray = [];
+    }
     const gridCellCallback = function(playerTwo, e) {
         //get players marker and add to gridcell on click
         //this = playerOne
@@ -71,7 +74,7 @@ const gameBoard = (function() {
         }
         }
     }
-    return {createGridCells};
+    return {createGridCells, resetArray};
 })();
 const displayController = (function() {
     //Module to control the display
@@ -97,10 +100,17 @@ const displayController = (function() {
     const displayWinner = function(winner) {
         //display model and announce the winner
         const name = winner.getName();
-        console.log(name)
         winningMessage.innerText = `${name} is the winner of this game`;
         toggleVisibility(model);
     }
+    const restartGame = function() {
+        gameBoard.resetArray();
+        while(gameGrid.firstChild) gameGrid.removeChild(gameGrid.lastChild);
+        toggleVisibility(model);
+        toggleVisibility(playerNames);
+        toggleVisibility(formContainer);
+    }
+    restart.onclick = restartGame
     return {displayWinner};
 })();
 const player = function(name) {
