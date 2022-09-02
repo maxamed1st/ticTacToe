@@ -1,9 +1,4 @@
 const gameGrid = document.getElementById("gameGrid");
-const playersForm = document.getElementById("playersForm");
-const formContainer = document.getElementById("formContainer");
-const playerNames = document.getElementById("playerNames");
-const firstPlayerDiv = document.getElementById("firstPlayerDiv");
-const secondPlayerDiv = document.getElementById("secondPlayerDiv");
 let firstPlayer = true;
 const gameBoard = (function() {
     //Module for the game board
@@ -78,6 +73,11 @@ const gameBoard = (function() {
 })();
 const displayController = (function() {
     //Module to control the display
+    const playersForm = document.getElementById("playersForm");
+    const formContainer = document.getElementById("formContainer");
+    const playerNames = document.getElementById("playerNames");
+    const firstPlayerDiv = document.getElementById("firstPlayerDiv");
+    const secondPlayerDiv = document.getElementById("secondPlayerDiv");
     const model = document.getElementById("model");
     const winningMessage = document.getElementById("winningMessage");
     const restart = document.getElementById("restart");
